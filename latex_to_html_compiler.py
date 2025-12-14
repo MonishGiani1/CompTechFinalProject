@@ -1649,7 +1649,7 @@ def main():
     # Main content
     latex_content = None
 
-    st.markdown("###Upload Your LaTeX File")
+    st.markdown("Upload Your LaTeX File")
 
     uploaded_file = st.file_uploader(
         "Choose a .tex file",
