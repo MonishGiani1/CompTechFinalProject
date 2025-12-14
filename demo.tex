@@ -1,0 +1,88 @@
+\documentclass{article}
+
+% ============ MACRO DEFINITIONS ============
+% Define custom macros to showcase macro expansion
+\newcommand{\important}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\highlight}[1]{\textit{\textcolor{blue}{#1}}}
+\newcommand{\note}[2]{\textbf{#1:} \textit{#2}}
+
+\begin{document}
+
+% ============ SECTION 1 ============
+\section{Introduction}
+\label{sec:intro}
+
+This document demonstrates \important{advanced compiler features} including:
+\begin{itemize}
+    \item Symbol table management
+    \item Cross-reference resolution
+    \item Macro expansion (with and without parameters)
+    \item Automatic numbering
+\end{itemize}
+
+As we'll see in \ref{sec:features}, these features greatly enhance the compiler.
+
+% ============ SECTION 2 ============
+\section{Advanced Features}
+\label{sec:features}
+
+\subsection{Symbol Table}
+\label{subsec:symtab}
+
+The \highlight{symbol table} tracks:
+\begin{enumerate}
+    \item Labels and their locations
+    \item Section and equation numbers
+    \item User-defined macros
+    \item Cross-references
+\end{enumerate}
+
+For example, this is Section \ref{sec:features}, subsection \ref{subsec:symtab}.
+
+\subsection{Macro Expansion}
+
+We defined three custom macros:
+\begin{itemize}
+    \item \texttt{\\important\{text\}} - creates \important{important text}
+    \item \texttt{\\highlight\{text\}} - creates \highlight{highlighted text}  
+    \item \texttt{\\note\{title\}\{text\}} - creates \note{Example}{a formatted note}
+\end{itemize}
+
+\section{Mathematical Equations}
+\label{sec:math}
+
+Here's an important equation:
+$$E = mc^2$$
+
+And another one:
+$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$
+
+These equations are automatically numbered!
+
+\section{Tables and Figures}
+\label{sec:tables}
+
+\begin{center}
+\begin{tabular}{|l|c|r|}
+\hline
+Left & Center & Right \\
+\hline
+Data 1 & Data 2 & Data 3 \\
+Data 4 & Data 5 & Data 6 \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+
+This demo showed features from Sections \ref{sec:intro}, \ref{sec:features}, \ref{sec:math}, and \ref{sec:tables}.
+
+\important{The compiler successfully handles:}
+\begin{itemize}
+    \item \highlight{Cross-references} that link to correct section numbers
+    \item \important{Custom macros} with parameter substitution
+    \item Automatic numbering of sections and equations
+    \item Symbol table tracking and resolution
+\end{itemize}
+
+\end{document}
