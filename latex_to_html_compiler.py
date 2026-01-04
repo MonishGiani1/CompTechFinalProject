@@ -597,6 +597,55 @@ class Parser:
         if self.peek().type == TokenType.RBRACE:
             self.expect(TokenType.RBRACE)
         return text
+    
+    def read_braced_text_preserving_commands(self) -> str:
+        """Read text inside braces as a string, preserving LaTeX commands with backslashes"""
+        if self.peek().type != TokenType.LBRACE:
+            return ""
+        
+        self.expect(TokenType.LBRACE)
+        text = ""
+        depth = 1
+        
+        # Map token types to their LaTeX command names
+        command_names = {
+            TokenType.TEXTBF: 'textbf',
+            TokenType.TEXTIT: 'textit',
+            TokenType.TEXTCOLOR: 'textcolor',
+            TokenType.UNDERLINE: 'underline',
+            TokenType.EMPH: 'emph',
+            TokenType.TEXTTT: 'texttt',
+            TokenType.TEXTRM: 'textrm',
+            TokenType.TEXTSC: 'textsc',
+            TokenType.TINY: 'tiny',
+            TokenType.SMALL: 'small',
+            TokenType.LARGE: 'large',
+            TokenType.HUGE: 'huge',
+        }
+
+        while depth > 0 and self.peek().type != TokenType.EOF:
+            token = self.peek()
+            
+            if token.type == TokenType.LBRACE:
+                depth += 1
+                text += "{"
+                self.advance()
+            elif token.type == TokenType.RBRACE:
+                depth -= 1
+                if depth > 0:
+                    text += "}"
+                    self.advance()
+            elif token.type in command_names:
+                # Reconstruct the command with backslash
+                text += "\\" + command_names[token.type]
+                self.advance()
+            else:
+                text += token.value
+                self.advance()
+
+        if self.peek().type == TokenType.RBRACE:
+            self.expect(TokenType.RBRACE)
+        return text
 
     def read_optional_arg(self) -> Optional[str]:
         """Read optional argument in brackets"""
@@ -664,8 +713,8 @@ class Parser:
         if param_str and param_str.isdigit():
             num_params = int(param_str)
         
-        # Read definition
-        definition = self.read_braced_text()
+        # Read definition - use the preserving function to keep backslashes
+        definition = self.read_braced_text_preserving_commands()
         
         # Register macro
         self.macro_processor.define_macro(name, num_params, definition)
@@ -1086,7 +1135,12 @@ class Parser:
                 elif self.peek().type == TokenType.MATH_DISPLAY and delim.value == '$$':
                     self.advance()
                     break
-                math_content += self.peek().value
+                # Preserve backslashes for math commands
+                token = self.peek()
+                if token.type == TokenType.MATH_COMMAND:
+                    math_content += '\\' + token.value
+                else:
+                    math_content += token.value
                 self.advance()
         elif delim.value in ['\\(', '\\[']:
             closing = '\\)' if delim.value == '\\(' else '\\]'
@@ -1097,7 +1151,12 @@ class Parser:
                 elif self.peek().type == TokenType.MATH_DISPLAY and delim.value == '\\[' and self.peek().value == '\\]':
                     self.advance()
                     break
-                math_content += self.peek().value
+                # Preserve backslashes for math commands
+                token = self.peek()
+                if token.type == TokenType.MATH_COMMAND:
+                    math_content += '\\' + token.value
+                else:
+                    math_content += token.value
                 self.advance()
 
         # Number equations if display mode

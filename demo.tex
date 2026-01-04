@@ -1,7 +1,6 @@
 \documentclass{article}
 
 % ============ MACRO DEFINITIONS ============
-% Define custom macros to showcase macro expansion
 \newcommand{\important}[1]{\textbf{\textcolor{red}{#1}}}
 \newcommand{\highlight}[1]{\textit{\textcolor{blue}{#1}}}
 \newcommand{\note}[2]{\textbf{#1:} \textit{#2}}
@@ -9,80 +8,81 @@
 \begin{document}
 
 % ============ SECTION 1 ============
-\section{Introduction}
+\section{Introduction to Quantum Computing}
 \label{sec:intro}
 
-This document demonstrates \important{advanced compiler features} including:
+Quantum computing represents a \important{paradigm shift} in computational theory. Unlike classical computers that use bits, quantum computers leverage:
 \begin{itemize}
-    \item Symbol table management
-    \item Cross-reference resolution
-    \item Macro expansion (with and without parameters)
-    \item Automatic numbering
+    \item Superposition of quantum states
+    \item Entanglement between qubits
+    \item Interference patterns for computation
+    \item Probabilistic measurement outcomes
 \end{itemize}
 
-As we'll see in \ref{sec:features}, these features greatly enhance the compiler.
+The fundamental principles discussed in \ref{sec:principles} enable algorithms that outperform classical approaches.
 
 % ============ SECTION 2 ============
-\section{Advanced Features}
-\label{sec:features}
+\section{Core Principles}
+\label{sec:principles}
 
-\subsection{Symbol Table}
-\label{subsec:symtab}
+\subsection{Quantum State Representation}
+\label{subsec:states}
 
-The \highlight{symbol table} tracks:
+The \highlight{quantum state} of a qubit exists in a superposition:
 \begin{enumerate}
-    \item Labels and their locations
-    \item Section and equation numbers
-    \item User-defined macros
-    \item Cross-references
+    \item Linear combinations of basis states
+    \item Complex probability amplitudes
+    \item Normalization constraints
+    \item Measurement collapse
 \end{enumerate}
 
-For example, this is Section \ref{sec:features}, subsection \ref{subsec:symtab}.
+Section \ref{sec:principles}, subsection \ref{subsec:states} establishes the foundation for understanding quantum gates.
 
-\subsection{Macro Expansion}
+\subsection{Key Properties}
 
-We defined three custom macros:
+Three essential quantum phenomena:
 \begin{itemize}
-    \item \texttt{\\important\{text\}} - creates \important{important text}
-    \item \texttt{\\highlight\{text\}} - creates \highlight{highlighted text}  
-    \item \texttt{\\note\{title\}\{text\}} - creates \note{Example}{a formatted note}
+    \item \texttt{Superposition} - qubits exist in \important{multiple states simultaneously}
+    \item \texttt{Entanglement} - produces \highlight{correlated measurement outcomes}  
+    \item \texttt{Interference} - enables \note{Quantum Speedup}{constructive and destructive interference patterns}
 \end{itemize}
 
-\section{Mathematical Equations}
+\section{Mathematical Framework}
 \label{sec:math}
 
-Here's an important equation:
-$$E = mc^2$$
+The Schrödinger equation governs quantum evolution:
+$$i\hbar\frac{\partial}{\partial t}|\psi\rangle = \hat{H}|\psi\rangle$$
 
-And another one:
-$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$
+Measurement probability follows the Born rule:
+$$P(x) = |\langle x|\psi\rangle|^2$$
 
-These equations are automatically numbered!
+These equations form the mathematical backbone of quantum mechanics.
 
-\section{Tables and Figures}
-\label{sec:tables}
+\section{Quantum Gate Comparison}
+\label{sec:gates}
 
 \begin{center}
 \begin{tabular}{|l|c|r|}
 \hline
-Left & Center & Right \\
+Gate & Qubits & Reversible \\
 \hline
-Data 1 & Data 2 & Data 3 \\
-Data 4 & Data 5 & Data 6 \\
+Hadamard & 1 & Yes \\
+CNOT & 2 & Yes \\
+Toffoli & 3 & Yes \\
 \hline
 \end{tabular}
 \end{center}
 
-\section{Conclusion}
+\section{Implications and Future Directions}
 
-This demo showed features from Sections \ref{sec:intro}, \ref{sec:features}, \ref{sec:math}, and \ref{sec:tables}.
+Quantum computing builds on concepts from \ref{sec:intro}, \ref{sec:principles}, \ref{sec:math}, and \ref{sec:gates}.
 
-\important{The compiler successfully handles:}
+\important{Current research focuses on:}
 \begin{itemize}
-    \item \highlight{Cross-references} that link to correct section numbers
-    \item \important{Custom macros} with parameter substitution
-    \item Automatic numbering of sections and equations
-    \item Symbol table tracking and resolution
+    \item \highlight{Error correction} schemes to maintain coherence
+    \item \important{Scalable architectures} for practical quantum computers
+    \item Quantum supremacy demonstrations
+    \item Hybrid classical-quantum algorithms
 \end{itemize}
 
 \end{document}
