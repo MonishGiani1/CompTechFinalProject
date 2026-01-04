@@ -1785,7 +1785,7 @@ def main():
                     with tab2:
                         st.markdown("### HTML Source Code")
                         st.code(html_output, language='html', line_numbers=True)
-                        st.info("Use the copy button in the top-right corner to copy the HTML.")
+                        
 
 
 if __name__ == "__main__":
