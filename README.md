@@ -72,7 +72,7 @@ def hello():
 ### Running the Compiler
 
 ```bash
-streamlit run latex_to_html_compiler_updated_but_better.py
+streamlit run latex_to_html_compiler.py
 ```
 
 ### Web Interface
@@ -128,6 +128,4 @@ Einstein's famous equation: $$E = mc^2$$
 - Math rendering uses MathJax (requires internet connection)
 - Some advanced LaTeX features not supported
 
-## License
 
-[Add your license here]
