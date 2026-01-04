@@ -1,6 +1,8 @@
 # LaTeX to HTML Compiler
 
-A custom LaTeX compiler that converts `.tex` files to HTML with full support for cross-references, macros, and mathematical expressions.
+A LaTeX compiler that converts `.tex` files to HTML with full support for cross-references, macros, and mathematical expressions.
+
+App live on: https://comptechfinalproject-ybftudss9vit2busqejqtk.streamlit.app/
 
 ## Features
 
