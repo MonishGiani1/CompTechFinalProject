@@ -1561,11 +1561,12 @@ def compile_latex_to_html(latex_code: str) -> Tuple[str, SymbolTable]:
 
         return html, symbol_table
     except SyntaxError as e:
-        return f"<pre style='color: red; background: #fff0f0; padding: 20px; border: 2px solid red;'>Syntax Error: {e}</pre>", SymbolTable()
+        error_msg = str(e)
+        return f"<pre style='color: red; background: #fff0f0; padding: 20px; border: 2px solid red; border-radius: 8px; font-family: monospace;'><strong>Syntax Error:</strong>\n{error_msg}</pre>", SymbolTable()
     except Exception as e:
         import traceback
         error_trace = traceback.format_exc()
-        return f"<pre style='color: red; background: #fff0f0; padding: 20px; border: 2px solid red;'>Unexpected error: {e}\n\nTraceback:\n{error_trace}</pre>", SymbolTable()
+        return f"<pre style='color: red; background: #fff0f0; padding: 20px; border: 2px solid red; border-radius: 8px; font-family: monospace; white-space: pre-wrap;'><strong>Compilation Error:</strong>\n{str(e)}\n\n<strong>Full Traceback:</strong>\n{error_trace}</pre>", SymbolTable()
 
 
 def create_download_link(html_content: str, filename: str):
@@ -1785,8 +1786,13 @@ def main():
                     with tab2:
                         st.markdown("### HTML Source Code")
                         st.code(html_output, language='html', line_numbers=True)
-                        
+                        st.info("Use the copy button in the top-right corner to copy the HTML.")
 
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
