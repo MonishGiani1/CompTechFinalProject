@@ -1722,7 +1722,7 @@ def main():
         st.success(f"File **{uploaded_file.name}** uploaded successfully!")
 
         with st.expander("Preview LaTeX Source", expanded=False):
-            st.code(latex_content[:1000] + ("..." if len(latex_content) > 1000 else ""), language='latex')
+            st.code(latex_content, language='latex')
 
     # Convert button
     st.markdown("---")
